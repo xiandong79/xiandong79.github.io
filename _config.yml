@@ -1,7 +1,7 @@
-name: Ewerton Nascimento
-title: Ewerton Nascimento
-description: This is my blog where I talk about software development.
-meta_description: "Ewerton Nascimento"
+name: Xiandong QI
+title: Xiandong
+description: I am a first year PhD student in CSE department of HKUST.
+meta_description: "Xiandong"
 image: /assets/images/profile.png
 
 markdown: kramdown
@@ -14,10 +14,10 @@ paginate: 15
 permalink: /:title
 
 twitter:
-  username: ewertonorg
+  username: xqiad
 # Details for the RSS feed generator
-url:            'ewertonorg.github.io'
-author:         'Ewerton Nascimento'
+url:            'xiandong79.github.io'
+author:         'Xiandong'
 
 gems:
   - jekyll-paginate

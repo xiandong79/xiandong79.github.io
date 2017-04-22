@@ -1,4 +1,5 @@
 # Memory Management in deep learning 
+
 ## Review on Training Deep Nets with Sublinear Memory Cost
 
 Source: This is an arXiv paper published by Tianqi Chen on 22 Apr, 2016.

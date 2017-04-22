@@ -49,6 +49,27 @@ xy = np.loadtxt(os.path.join('data-03-diabetes.csv'), delimiter=',', dtype=np.fl
 
 ### build model
 
-Our purpose is to do linear regression on the date sample so I searched 
+Our purpose is to do linear regression on the date sample so I searched "mxnet linear regression". I found something relevant on the [official website of MXNet](http://mxnet.io/api/python/symbol.html).
+
+- **FullyConnected**. 
+
+Apply a linear transformation: Y=XWT+b
+
+- **LinearRegressionOutput**. 
+
+Use linear regression for final output, this is used on final output of a net.
+
+Here is the code:
+
+```
+data = mx.sym.Variable("data")
+target = mx.sym.Variable("target")
+fc = mx.sym.FullyConnected(data=data, num_hidden=1, name='fc')
+pred = mx.sym.LogisticRegressionOutput(data=fc, label=target)
+```
+
+### Construct the Module
+Next, I was confused by the **Construct the Module** block. And.. We will construct the Module object based on the symbol. Module will be used **for training and testing**. I went to the [Module API of MXNet](http://mxnet.io/api/python/module.html).
+
 
 

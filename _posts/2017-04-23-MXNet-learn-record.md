@@ -49,4 +49,6 @@ xy = np.loadtxt(os.path.join('data-03-diabetes.csv'), delimiter=',', dtype=np.fl
 
 ### build model
 
+Our purpose is to do linear regression on the date sample so I searched 
+
 

@@ -1,4 +1,3 @@
-# Review on MapReduce
 
 ## Advantages
 

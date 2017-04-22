@@ -1,6 +1,10 @@
 # xiandong79.github.io
-Personal Homepage
 
-I was inpired by the style of [ewertonorg](https://ewertonorg.github.io/).
+##Personal Homepage
 
-Timestamp: 22 April, 2017
+
+Inpired by the succinct style of [ewertonorg](https://ewertonorg.github.io/).
+
+Made with Jekyll using [Kasper theme](https://github.com/rosario/kasper)
+
+Timestamp: 23 April, 2017

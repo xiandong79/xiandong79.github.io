@@ -1,8 +1,4 @@
-This is my ongoing MXNet learning record.
-
-## [MXNet Logistic Regression Example](https://github.com/xiandong79/aws-summit-2017-seoul/blob/master/mxnet-logistic_regression_diabetes.ipynb)
-
-We use 8 features to predict whether the patient has diabetes or not.
+We use 8 features to predict whether the patient has diabetes or not. The source code is [here](https://github.com/xiandong79/aws-summit-2017-seoul/blob/master/mxnet-logistic_regression_diabetes.ipynb).
 
 ### 1. Load data
 when I first find that the data is stored in a .csv file. I searched "python load csv file" and "numpy load csv file". After reading the first few links...

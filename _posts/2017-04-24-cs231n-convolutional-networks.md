@@ -3,7 +3,7 @@
 The cs231n class is published on [github](http://cs231n.github.io/convolutional-networks/).
 
 ## Architecture Overview
-![neural_net2]()
+![neural_net2](https://github.com/xiandong79/xiandong79.github.io/blob/master/_posts/images_for_posts/neural_net2.jpeg)
 
 ConvNet Layers
 Convolutional Layer

@@ -1,17 +1,29 @@
-We use 8 features to predict whether the patient has diabetes or not by a 3 fully connected layer network.
+We use 8 features to predict whether the patient has diabetes or not by a 3 fully connected layer network with [code here](https://github.com/xiandong79/aws-summit-2017-seoul/blob/master/mxnet-2hidden_fnn_diabetes.ipynb).
 
-#### mx.bind() in Module API
+
+This work/network is quite similar with the last one - linear regresssion using MXNet. So I missed the `data loading` and `build model` two section.
+
+### 3. Module Construction - make the 'model' alive !
+**mx.mod.bind()** in Module API is Bind the symbols to construct executors. This is necessary before one can perform computation with the module.
+ 
 ```
 bind(data_shapes, label_shapes=None, for_training=True, inputs_need_grad=False, force_rebind=False, shared_module=None, grad_req='write')
+```
 
-Bind the symbols to construct executors. This is necessary before one can perform computation with the module.
+### 4. Training
+* When we do 'training' section, the first thing comes to mind is to import the input_data flow using `mx.io.XXX` API. 
+* At least, we have to define a `metric` which help the model improve/update its parameters. `mx.metric.XXX` may give you a help.
+* `mod.fit()` is used to do the real traing process.
 
+### 5. Testing
+We may guess that when we do 'testing', we need input the 'test_input_data' and using the model (mod) we have trained to get a 'output'. In the beginning, I know I might use `mod.predict(data=est_input_data)`. However, it seems that I have to build a new network to get the 'test_output' using `shared_module = mod ` where **mod** is the model we have trained.
+
+```
 shared_module (Module) 
 - Useful for 'Testing'
 – Default is None. This is used in bucketing. When not None, the shared module essentially corresponds to a different bucket 
 – a module with different symbol but with the same sets of parameters (e.g. unrolled RNNs with different lengths).
 ```
-### Testing
 
 ```
 >>> np.equal([0, 1, 3], np.arange(3))

@@ -1,4 +1,4 @@
-**ConvNet** architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. 
+未完成 **ConvNet** architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. 
 
 These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network(32* 32* 3 = 3072 weights a layer for a regular Neural Network).
 
@@ -30,9 +30,20 @@ In this way, ConvNets transform the original image layer by layer from the origi
 We now describe the individual layers and the details of their hyperparameters and their connectivities.
 
 #### Convolutional Layer
+* Local Connectivity. When dealing with high-dimensional inputs such as images, as we saw above it is impractical to connect neurons to all neurons in the previous volume. Instead, we will connect each neuron to only a local region of the input volume. The spatial extent of this connectivity is a hyperparameter called the receptive field of the neuron (equivalently this is the filter size). The extent of the connectivity along the depth axis is always equal to the depth of the input volume. 
+
+Example 1. For example, suppose that the input volume has size [32x32x3], (e.g. an RGB CIFAR-10 image). If the receptive field (or the filter size) is 5x5, then each neuron in the Conv Layer will have weights to a [5x5x3] region in the input volume, for a total of 5 * 5 * 3 = 75 weights (and +1 bias parameter). Notice that the extent of the connectivity along the depth axis must be 3, since this is the depth of the input volume.
+
+Example 2. Suppose an input volume had size [16x16x20]. Then using an example receptive field size of 3x3, every neuron in the Conv Layer would now have a total of 3 * 3 * 20 = 180 connections to the input volume. Notice that, again, the connectivity is local in space (e.g. 3x3), but full along the input depth (20).
 
 
-Pooling Layer
+* Spatial arrangement. Three hyperparameters control the size of the output volume: **the depth, stride and zero-padding.** We discuss these next:
+
+First, the **depth** of the output volume is a hyperparameter: it corresponds to the number of filters we would like to use, each learning to look for something different in the input. For example, if the first Convolutional Layer takes as input the raw image, then different neurons along the depth dimension may activate in presence of various oriented edged, or blobs of color. We will refer to a set of neurons that are all looking at the same region of the input as a depth column (some people also prefer the term fibre).
+
+
+
+#### Pooling Layer
 Normalization Layer
 Fully-Connected Layer
 Converting Fully-Connected Layers to Convolutional Layers

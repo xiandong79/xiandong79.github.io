@@ -1,5 +1,5 @@
 
-The code of this work is on [github](https://github.com/xiandong79/aws-summit-2017-seoul/blob/master/mxnet-mnist_deep_cnn.ipynb).
+The code of this work is on [github](https://github.com/xiandong79/aws-summit-2017-seoul/blob/master/mxnet-mnist_deep_cnn.ipynb). About how we design the "hyper parameters" is from the [CS231 class](http://cs231n.github.io/convolutional-networks/)
 
 In order to get the original data form Inetnet, I searched "sklearn mnist data" where **sklearn/scikit-learn** is a  very powerful machine learning library in Python and linked to [5.9. Downloading datasets from the mldata.org repository](http://scikit-learn.org/stable/datasets/). 
 

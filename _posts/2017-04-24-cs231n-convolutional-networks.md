@@ -7,11 +7,6 @@ The cs231n class is published on [github](http://cs231n.github.io/convolutional-
 ## Architecture Overview
 ![neural_net2](/downloads/neural_net2.jpeg)
 
-```
-https://jekyllrb.com/docs/posts/
-This is a tutorial on how to insert a image/pdf file in the post.
-```
-
 
 
 

@@ -1,6 +1,6 @@
 Optimization is the process of finding the set of parameters `W` that minimize the loss function.
- 
- 
+
+
 ### Visualizing the loss function
 
  The full SVM loss (without regularization) becomes:

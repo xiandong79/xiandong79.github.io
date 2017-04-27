@@ -1,6 +1,8 @@
  The approach will have two major components: **a score function** that maps the raw data to class scores, and a **loss function** that *quantifies the agreement* between the predicted scores and the ground truth labels. 
  
-## Intro to Linear classification
+ 
+ 
+### Intro to Linear classification
 As we saw, kNN has a number of disadvantages:
 
 * The classifier must remember all of the training data and store it for future comparisons with the test data. This is space inefficient because datasets may easily be gigabytes in size.

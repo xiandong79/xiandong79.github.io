@@ -1,12 +1,13 @@
  The approach will have two major components: **a score function** that maps the raw data to class scores, and a **loss function** that *quantifies the agreement* between the predicted scores and the ground truth labels. 
  
- 
- 
-### Intro to Linear classification
+
 As we saw, kNN has a number of disadvantages:
 
 * The classifier must remember all of the training data and store it for future comparisons with the test data. This is space inefficient because datasets may easily be gigabytes in size.
 * Classifying a test image is expensive since it requires a comparison to all training images.
+
+
+## Intro to Linear classification
 
 ### Parameterized mapping from images to label scores
 Linear classifier. In this module we will start out with arguably the simplest possible function, a linear mapping:

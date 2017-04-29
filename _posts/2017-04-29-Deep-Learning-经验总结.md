@@ -32,6 +32,19 @@
 
 ![momentum.png](/downloads/momentum.png)
 
+SGD``方法的一个缺点是，其更新方向完全依赖于当前的batch，因而其更新十分不稳定。解决这一问题的一个简单的做法便是引入`momentum`。
+
+`momentum`即动量，它模拟的是物体运动时的惯性，即更新的时候在一定程度上保留之前更新的方向，同时利用当前batch的梯度微调最终的更新方向(增加了某一方向上的**连续性**)。这样一来，可以在一定程度上增加稳定性，从而学习地更快，并且还有一定摆脱局部最优的能力.
+
+对于一般的SGD,沿负梯度方向下降。
+
+![SGD.png](/downloads/SGD.png)
+
+而带`momentum`项的SGD则写生如下形式：
+
+![SGD-momentum.png](/downloads/SGD-momentum.png)
+
+其中 `B` 即`momentum`系数，通俗的理解上面式子就是，如果上一次的 momentum（即`v`） 与这一次的负梯度方向是相同的，那这次下降的幅度就会加大，所以这样做能够达到加速收敛的过程。
 
 ## Overfitting
 `Overfitting`发生的根本原因是 用 `training set` 学习来的模型里面的 参数，并不能体现出在 `test set` 里面的**新特性**。比如，图像识别里面，数字`2`的 形状是扭曲的，或者图片背景是新的。有下面几种解决方案：

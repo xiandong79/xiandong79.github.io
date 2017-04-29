@@ -56,8 +56,10 @@
 ### 为什么用CNN
 ![whycnn.png](/downloads/whycnn.png)
 
+没有必要用 `Fully Connected Layer` ／ 1000 个`nodes`, 图片中细节的 模式 只用一个 `3*3` ，或者 `5*5`大小的维度/`filter`就可以表现出，比如，人的嘴巴，建筑的棱角。
+
 ### 减少了参数？
-| ![cnn-lessparameters-1.png](/downloads/cnn-lessparameters-1.png) | ![cnn-lessparameters-2.png](/downloads/cnn-lessparameters-2.png) |
+![cnn-lessparameters-1.png](/downloads/cnn-lessparameters-1.png) ![cnn-lessparameters-2.png](/downloads/cnn-lessparameters-2.png)
 
 
 ```

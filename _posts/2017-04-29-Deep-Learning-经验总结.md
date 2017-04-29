@@ -57,8 +57,7 @@
 ![whycnn.png](/downloads/whycnn.png)
 
 ### 减少了参数？
-![cnn-lessparameters-1.png](/downloads/cnn-lessparameters-1.png)
-![cnn-lessparameters-2.png](/downloads/cnn-lessparameters-2.png)
+| ![cnn-lessparameters-1.png](/downloads/cnn-lessparameters-1.png) | ![cnn-lessparameters-2.png](/downloads/cnn-lessparameters-2.png) |
 
 
 ```

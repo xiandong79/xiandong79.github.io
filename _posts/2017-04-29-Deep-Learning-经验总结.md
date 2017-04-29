@@ -53,6 +53,13 @@
 
 ## CNN
 
+### 为什么用CNN
+![whycnn.png](/downloads/whycnn.png)
+
+### 减少了参数？
+![cnn-lessparameters-1.png](/downloads/cnn-lessparameters-1.png)
+![cnn-lessparameters-2.png](/downloads/cnn-lessparameters-2.png)
+
 
 ```
 既然有了深度学习，那是不是以后很多类别的工作都会被取代？

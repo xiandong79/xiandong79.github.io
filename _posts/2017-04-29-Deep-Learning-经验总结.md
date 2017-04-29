@@ -10,6 +10,8 @@
 ### Mini-batch
 
  <img src="./downloads/Mini-batch.png" width = "300" height = "200" alt="Mini-batch" align=center />
+ 
+ <img src="http://img.blog.csdn.net/20151129213701642" width=256 height=256 />
 
 使用`Mini-batch`的原因是，可以更快的更新参数和训练模型。举个例子，以前是拿到了50000个图片 对于当前模型的 Loss 然后进行 back-propagation，更新参数，现在我们可以在 学习了100个图片后就更新参数，从而更快的收敛函数。背后的原因是，这100个图片所带来的`信息量`已经足够去更新一次参数，优化一次模型。
 

@@ -137,7 +137,7 @@ Gets a debug string.
 Returns:	debug_str – Debug string of the symbol.
 Return type:	string
 
-## `Resnet` example & analysis
+## [Resnet](https://github.com/KaimingHe/deep-residual-networks) example & analysis
 
 ### Core code: 
 

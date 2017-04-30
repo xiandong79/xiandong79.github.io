@@ -13,4 +13,6 @@ This is [a tutorial](https://jekyllrb.com/docs/posts/) on how to insert an image
 
 This are two [tutorial-1](https://segmentfault.com/a/1190000002793897) [tutorial-2](http://blog.jobbole.com/58978/) on how to use **code Autocompletion in Vim** by [YouCompleteMe](http://valloric.github.io/YouCompleteMe/) and [VundleVim](https://github.com/VundleVim/Vundle.vim). **Simple and Powerful**.
 
+This is [a tutorial](https://segmentfault.com/a/1190000003962806) on how to build Vim into a powerful IDE.
+
 Timestamp: 23 April, 2017

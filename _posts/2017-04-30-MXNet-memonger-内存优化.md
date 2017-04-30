@@ -137,7 +137,30 @@ Gets a debug string.
 Returns:	debug_str – Debug string of the symbol.
 Return type:	string
 
+## `Resnet` example & analysis
 
-运行结果：
+### Core code: 
+
+```
+layers = [3, 24, 36, 3]
+# Get a 4-stage residual net, with configurations specified as layers.
+
+batch_size = 32
+net = get_symbol(layers)
+dshape = (batch_size, 3, 224, 224)
+net_mem_planned = memonger.search_plan(net, data=dshape)
+old_cost = memonger.get_cost(net, data=dshape)
+new_cost = memonger.get_cost(net_mem_planned, data=dshape)
+
+print('Old feature map cost=%d MB' % old_cost)
+print('New feature map cost=%d MB' % new_cost)
+# You can savely feed the net to the subsequent mxnet training script.
+```
+
+
+### `Resnet` Architrcture
+![resnet-architrcture](/downloads/resnet-architrcture.png)
+
+### Reuslt：
 
 ![mem-result](/downloads/mem-result.png)

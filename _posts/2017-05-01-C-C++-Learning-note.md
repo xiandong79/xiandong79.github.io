@@ -1,11 +1,15 @@
 C/C++ 学习笔记。
-自己因为不是科班出身，C／C++，Python的基础都不够好。只能遇到不懂，就查一查记录下来。这次在这里记录的，也都是想看tinyflow，nnvm里面的`内存管理`部分，遇到的新知识。
+自己因为不是科班出身，C／C++，Python的基础都不够好。只能遇到不懂，就查一查记录下来。这次在这里记录的，也都是想看tinyflow，nnvm里面的`内存管理`部分，而遇到的新知识。
 
 * [C语言中.h文件和.c文件](#C语言中.h文件和.c文件)
 * [C++模板-template](#C++模板-template)
 	* [函数模板通式](#函数模板通式)
 	* [类模板通式](#类模板通式)
 	* [演示示例](#演示示例)
+* [结构-struct](#结构-struct)
+* [其他小知识点](#其他小知识点)
+	* [常用的#include头文件总结](#常用的#include头文件总结)
+
 
 ## [C语言中.h文件和.c文件详细解析](http://blog.sina.com.cn/s/blog_73006d600102wcx5.html)
 <span id="C语言中.h文件和.c文件"></span>
@@ -223,5 +227,59 @@ C++模板
 13 }
 ```
 
+## 结构-struct
+<span id="结构-struct"></span>
 
+
+在c++中struct和类的区别在于struct**不能有方法**，所有成员是public的
+
+```
+struct Movie/*可以指定类型名也可以不指定*/
+{
+    //成员都是public的
+    int ID;
+    string Name;
+} movie; //可以在声明struct的时候声明一个struct实例，这个有啥意思呢？
  
+ 
+ 
+int main(){
+    //movie变量在Movie结构声明处定义了
+    movie.ID = 100;
+    movie.Name = "Face Off";
+ 
+    cout<<"movie.ID = "<<movie.ID<<endl;
+    cout<<"movie.Name = "<<movie.Name<<endl;
+ 
+    //声明一个变量m，无须为赋初值就可以使用它了
+    Movie m;
+    m.ID = 101;
+    m.Name = "多面双雄";
+    cout<<"m.ID="<<m.ID<<endl;
+    cout<<"m.Name="<<m.Name<<endl;
+ 
+    //声明结构的指针
+    Movie * mp;
+    mp = &m;
+    //在指针中调用成员时要用->符号，mp->ID等价于(*mp).ID
+    cout<<"mp->ID = "<<mp->ID<<endl;
+    cout<<"mp->Name = "<<mp->Name<<endl;
+ 
+}
+```
+
+
+
+## 其他小知识点
+<span id="其他小知识点"><span>
+
+### 1. 常用的#include头文件总结
+<span id="常用的#include头文件总结"><span>
+
+```
+#include <limits>　　　　 //定义各种数据类型最值常量
+#include <map>　　　　　　 //STL 映射容器
+
+```
+
+> STL = Standard Template Library，标准模板库

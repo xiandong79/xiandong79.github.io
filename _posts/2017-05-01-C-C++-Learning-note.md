@@ -18,7 +18,7 @@ C/C++ 学习笔记。
 
 * 这样做目的是为了实现软件的模块化
 * 使软件结构清晰，而且也便于别人使用你写的程序
-* 纯粹用 C 语言语法的角度，你当然可以在 .h 中放任何东西，因为 #include<xx.h> 完全等价于把 .h 文件 Ctrl-C Ctrl-V 到 .c 中
+* 纯粹用 C 语言语法的角度，你当然可以在 .h 中放任何东西，因为 #include<xx.h> 完全等价于把 .h 文件 **Ctrl-C Ctrl-V** 到 .c 中
 * .h 中应该都是一些宏定义和变量、函数声明，告诉别人你的程序“能干什么、该怎么用”
 * .c 中是所有变量和函数的定义，告诉计算机你的程序“该怎么实现”
 * .h只做声明，编译后不产生代码
@@ -275,11 +275,11 @@ int main(){
 
 ### 1. 常用的#include头文件总结
 <span id="常用的#include头文件总结"><span>
+> STL = Standard Template Library，标准模板库
+
 
 ```
 #include <limits>　　　　 //定义各种数据类型最值常量
 #include <map>　　　　　　 //STL 映射容器
 
 ```
-
-> STL = Standard Template Library，标准模板库

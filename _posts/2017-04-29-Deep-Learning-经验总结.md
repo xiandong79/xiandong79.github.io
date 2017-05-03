@@ -138,7 +138,7 @@ With each passing layer, we want the variance to remain the same. This helps us 
 
 * 尽量对数据做shuffle!!
 * 预处理: -mean/std zero-center
-* sgd + momentum.
+* sgd + momentum(动量).
 
 ```
 既然有了深度学习，那是不是以后很多类别的工作都会被取代？

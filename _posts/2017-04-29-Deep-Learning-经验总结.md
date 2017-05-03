@@ -1,9 +1,19 @@
 这篇文章的截图均来自“[一天学会深度学习](https://www.slideshare.net/tw_dsconf/ss-62245351)” -- 一个301页的幻灯片，深入浅出的讲解了深度学习的主要内容(**我个人非常推荐初学者进行学习**)。另外，在[知乎](https://www.zhihu.com)，也有非常多的[深度学习调参技巧](https://www.zhihu.com/question/25097993)经验分享。
 
+* [Loss_function](#Loss_function)
+* [Overfitting](#Overfitting)
+* [CNN](#CNN)
+* [Initialization](#Initialization)
+* [Batch_Normalization](#Batch_Normalization)
+* [其他](#其他)
+	*  尽量对数据做shuffle!!
+	* 预处理: -mean/std zero-center 
+	* sgd + momentum.
 
 **首先**，并不是所有的造成“不满意的模型”的原因 都是 `overfitting`。接下来这些也是可能造成“不满意的模型”的原因。
 
-### Loss function
+## Loss function
+<span id='Loss_function'></span>
 
 `Square Error` 和 `Cross Entropy` 对于不同问题，会造成不同的准确率。选好这个`判断标准`也是非常重要。
 
@@ -47,6 +57,7 @@
 其中 `B` 即`momentum`系数，通俗的理解上面式子就是，如果上一次的 momentum（即`v`） 与这一次的负梯度方向是相同的，那这次下降的幅度就会加大，所以这样做能够达到加速收敛的过程。
 
 ## Overfitting
+<span id='Overfitting'></span>
 `Overfitting`发生的根本原因是 用 `training set` 学习来的模型里面的 参数，并不能体现出在 `test set` 里面的**新特性**。比如，图像识别里面，数字`2`的 形状是扭曲的，或者图片背景是新的。有下面几种解决方案：
 
 ### Early stopping
@@ -65,6 +76,7 @@
 最后，如果依旧`overfitting`/`不理想的结果`，那可能就要更换新的模型。
 
 ## CNN
+<span id='CNN'></span>
 
 ### 为什么用CNN
 ![whycnn.png](/downloads/whycnn.png)
@@ -74,6 +86,59 @@
 ### 减少了参数？
 ![cnn-lessparameters-1.png](/downloads/cnn-lessparameters-1.png) ![cnn-lessparameters-2.png](/downloads/cnn-lessparameters-2.png)
 
+
+## Initialization
+<span id='Initialization'></span>
+
+* uniform
+
+W = np.random.uniform(low=-scale, high=scale, size=shape)
+
+* glorot_uniform
+
+scale = np.sqrt(6. / (shape[0] + shape[1]))
+np.random.uniform(low=-scale, high=scale, size=shape)
+
+* 高斯初始化:
+
+w = np.random.randn(n) / sqrt(n),n为参数数目
+
+激活函数为`relu`的话(by Kaiming He),推荐
+
+w = np.random.randn(n) * sqrt(2.0/n)
+
+*  svd:
+
+对RNN效果比较好,可以有效提高收敛速度
+
+### Xavier initialization
+
+In short, it helps signals reach deep into the network.
+
+If the weights in a network start too small, then the signal shrinks as it passes through each layer until it’s too tiny to be useful.
+If the weights in a network start too large, then the signal grows as it passes through each layer until it’s too massive to be useful.
+Xavier initialization makes sure the weights are ‘just right’, keeping the signal in a reasonable range of values **through many layers**.
+
+One good way is to assign the weights from a **Gaussian distribution**. Obviously this distribution would have zero mean and some finite variance. Let’s consider a linear neuron:
+
+```
+y = w1x1 + w2x2 + ... + wNxN + b
+```
+
+With each passing layer, we want the variance to remain the same. This helps us keep the signal from exploding to a high value or vanishing to zero. In other words, we need to initialize the weights in such a way that the variance remains the same for x and y. This initialization process is known as Xavier initialization. You can read the original paper [here](http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf).
+
+
+## Batch_Normalization
+<span id='Batch_Normalization'></span>
+
+
+
+## 其他
+<span id='其他'></span>
+
+* 尽量对数据做shuffle!!
+* 预处理: -mean/std zero-center
+* sgd + momentum.
 
 ```
 既然有了深度学习，那是不是以后很多类别的工作都会被取代？

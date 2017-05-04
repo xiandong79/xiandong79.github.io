@@ -9,6 +9,7 @@ C/C++ 学习笔记。
 * [结构-struct](#结构-struct)
 * [其他小知识点](#其他小知识点)
 	* [常用的#include头文件总结](#常用的#include头文件总结)
+	* [`this` pointer](#pointer)
 
 
 ## [C语言中.h文件和.c文件详细解析](http://blog.sina.com.cn/s/blog_73006d600102wcx5.html)
@@ -282,4 +283,97 @@ int main(){
 #include <limits>　　　　 //定义各种数据类型最值常量
 #include <map>　　　　　　 //STL 映射容器
 
+```
+
+### 2."using" keyword in C++
+
+Usage
+
+* using-directives for namespaces and using-declarations for namespace members
+* using-declarations for class members
+* type alias and alias template declaration (since C++11)
+
+```
+using namespace std; // to import namespace in the current namespace
+using SuperClass::X; // using super class methods in derived class
+using T = int; // type alias
+```
+
+A typedef-name can also be introduced by an `alias-declaration`. The identifier following the using keyword becomes a typedef-name and the optional attribute-specifier-seq following the identifier appertains to that typedef-name. It has the same semantics as if it were introduced by the `typedef` specifier. In particular, it does not define a new type and it shall not appear in the type-id.
+
+<span id="pointer"></span>
+### `this` pointer
+
+Syntax
+
+`this	`
+	
+The keyword this is a prvalue expression whose value is the address of the object, on which the member function is being called. It can appear in the following contexts:
+
+* Within the body of any non-static member function, including member initializer list
+*  within the declaration of a non-static member function anywhere after the (optional) cv-qualifier sequence, including dynamic exception specification(deprecated), noexcept specification(C++11), and the trailing return type(since C++11)
+*  within default member initializer (since C++11)
+
+The type of this in a member function of class X is X* (pointer to X). If the member function is cv-qualified, the type of this is cv X* (pointer to identically cv-qualified X). Since constructors and destructors cannot be cv-qualified, the type of this in them is always X*, even when constructing or destroying a const object.
+When a non-static class member is used in any of the contexts where the this keyword is allowed (non-static member function bodies, member initializer lists, default member initializers), the implicit this-> is automatically added before the name, resulting in a member access expression (which, if the member is a virtual member function, results in a virtual function call).
+
+In class templates, this is a dependent expression, and explicit this-> may be used to force another expression to become dependent.
+
+During construction of an object, if the value of the object or any of its subobjects is accessed through a glvalue that is not obtained, directly or indirectly, from the constructor's this pointer, the value of the object or subobject thus obtained is unspecified. In other words, the this pointer cannot be aliased in a constructor:
+
+```
+extern struct D d;
+struct D {
+    D(int a) : a(a), b(d.a) {} // b(a) or b(this->a) would be correct
+    int a, b;
+};
+D d = D(1);   // because b(d.a) did not obtain a through this, d.b is now unspecified
+```
+
+Example
+
+```
+class T
+{
+    int x;
+ 
+    void foo()
+    {
+        x = 6;       // same as this->x = 6;
+        this->x = 5; // explicit use of this->
+    }
+ 
+    void foo() const
+    {
+//        x = 7; // Error: *this is constant
+    }
+ 
+    void foo(int x) // parameter x shadows the member with the same name
+    {
+        this->x = x; // unqualified x refers to the parameter
+                     // 'this->' required for disambiguation
+    }
+ 
+    int y;
+    T(int x) : x(x), // uses parameter x to initialize member x
+               y(this->x) // uses member x to initialize member y
+    {}
+ 
+    T& operator= ( const T& b )
+    {
+        x = b.x;
+        return *this; // many overloaded operators return *this
+    }
+};
+ 
+class Outer {
+    int a[sizeof(*this)]; // error: not inside a member function
+    unsigned int sz = sizeof(*this); // OK: in default member initializer
+    void f() {
+        int b[sizeof(*this)]; // OK
+        struct Inner {
+            int c[sizeof(*this)]; // error: not inside a member function of Inner
+        };
+    }
+}
 ```

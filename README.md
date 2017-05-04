@@ -15,4 +15,7 @@ This are two [tutorial-1](https://segmentfault.com/a/1190000002793897) [tutorial
 
 This is [a tutorial](https://segmentfault.com/a/1190000003962806) on how to build Vim into a powerful IDE.
 
-Timestamp: 23 April, 2017
+This is [a tutorial on Tmux 速成教程](http://blog.jobbole.com/87584/).
+
+
+Timestamp: May, 2017

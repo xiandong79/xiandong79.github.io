@@ -131,6 +131,18 @@ With each passing layer, we want the variance to remain the same. This helps us 
 ## Batch_Normalization
 <span id='Batch_Normalization'></span>
 
+**Normalization** (shifting inputs to zero-mean and unit variance) is often used as a pre-processing step to make the data comparable across features.  As the data flows through a deep network, the weights and parameters adjust those values, sometimes making the data too big or too small again - a problem the authors refer to as "internal covariate shift".  By normalizing the data in each mini-batch, this problem is largely avoided.”
+
+### 归一化后有什么好处呢？
+
+原因在于神经网络学习过程本质就是为了学习数据分布，一旦训练数据与测试数据的分布不同，那么网络的泛化能力也大大降低；另外一方面，一旦每批训练数据的分布各不相同(batch 梯度下降)，那么网络就要在每次迭代都去学习适应不同的分布，这样将会大大降低网络的训练速度，这也正是为什么我们需要对数据都要做一个归一化预处理的原因。
+
+作者在文章中强调在训练过程中网络每层输入的分布一直在改变(internal covariate), 会使训练过程难度加大，但可以通过**normalize每层**的输入解决这个问题。
+
+
+
+>大家都知道在统计机器学习中的一个经典假设是“源空间（source domain）和目标空间（target domain）的数据分布（distribution）是一致的” ??!!
+
 
 
 ## 其他

@@ -17,5 +17,6 @@ This is [a tutorial](https://segmentfault.com/a/1190000003962806) on how to buil
 
 This is [a tutorial on Tmux 速成教程](http://blog.jobbole.com/87584/).
 
-
+This is [a tutorial on ag(A code searching tool)](https://github.com/ggreer/the_silver_searcher) and it is simple to use(e.g. type `ag 'memory_allocation'` if I want search the string/fuction 'memory_allocation' in one repo).
+  
 Timestamp: May, 2017

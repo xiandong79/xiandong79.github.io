@@ -10,6 +10,7 @@ C/C++ 学习笔记。
 * [其他小知识点](#其他小知识点)
 	* [常用的#include头文件总结](#常用的#include头文件总结)
 	* [`this` pointer](#pointer)
+	* [`auto` specifier](#specifier)
 
 
 ## [C语言中.h文件和.c文件详细解析](http://blog.sina.com.cn/s/blog_73006d600102wcx5.html)
@@ -376,4 +377,68 @@ class Outer {
         };
     }
 }
+```
+
+<span id="specifier"></span>
+### [`auto` specifier](http://en.cppreference.com/w/cpp/language/auto)
+
+auto specifier (since C++11)
+
+For variables, specifies that the type of the variable that is being declared will be automatically deduced from its initializer. For functions, specifies that the return type is a trailing return type or will be deduced from its return statements (since C++14). for non-type template parameters, specifies that the type will be deduced from the argument (since C++17)
+
+#### Syntax
+* auto variable initializer	(1)	(since C++11)
+* auto function -> return type	(2)	(since C++11)
+* auto function	(3)	(since C++14)
+* decltype(auto) variable initializer 
+
+```
+#include <iostream>
+#include <cmath>
+#include <typeinfo>
+ 
+template<class T, class U>
+auto add(T t, U u) -> decltype(t + u) // the return type is the type of operator+(T, U)
+{
+    return t + u;
+}
+ 
+auto get_fun(int arg) -> double (*)(double) // same as: double (*get_fun(int))(double)
+{
+    switch (arg)
+    {
+        case 1: return std::fabs;
+        case 2: return std::sin;
+        default: return std::cos;
+    }
+}
+ 
+int main()
+{
+    auto a = 1 + 2;
+    std::cout << "type of a: " << typeid(a).name() << '\n';
+    auto b = add(1, 1.2);
+    std::cout << "type of b: " << typeid(b).name() << '\n';
+    auto c = {1, 2};
+    std::cout << "type of c: " << typeid(c).name() << '\n';
+ 
+    auto my_lambda = [](int x) { return x + 3; };
+    std::cout << "my_lambda: " << my_lambda(5) << '\n';
+ 
+    auto my_fun = get_fun(2);
+    std::cout << "type of my_fun: " << typeid(my_fun).name() << '\n';
+    std::cout << "my_fun: " << my_fun(3) << '\n';
+ 
+//  auto int x; // error as of C++11: "auto" is no longer a storage-class specifier
+}
+```
+Possible output:
+
+```
+type of a: int
+type of b: double
+type of c: std::initializer_list<int>
+my_lambda: 8
+type of my_fun: double (*)(double)
+my_fun: 0.14112
 ```

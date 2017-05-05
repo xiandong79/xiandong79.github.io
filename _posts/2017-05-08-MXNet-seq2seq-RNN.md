@@ -1,0 +1,1 @@
+[source code](https://github.com/xiandong79/aws-summit-2017-seoul/blob/master/mxnet-seq2seq.ipynb)

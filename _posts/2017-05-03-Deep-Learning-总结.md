@@ -1,14 +1,9 @@
-这篇文章的截图均来自“[一天学会深度学习](https://www.slideshare.net/tw_dsconf/ss-62245351)” -- 一个301页的幻灯片，深入浅出的讲解了深度学习的主要内容(**我个人非常推荐初学者进行学习**)。另外，在[知乎](https://www.zhihu.com)，也有非常多的[深度学习调参技巧](https://www.zhihu.com/question/25097993)经验分享。
+这篇文章的一些截图均来自“[一天学会深度学习](https://www.slideshare.net/tw_dsconf/ss-62245351)” -- 一个301页的幻灯片，深入浅出的讲解了深度学习的主要内容(**我个人非常推荐初学者进行学习**)。另外，在[知乎](https://www.zhihu.com)，也有非常多的经验分享。
 
-* [Loss_function](#Loss_function)
-* [Overfitting](#Overfitting)
-* [CNN](#CNN)
-* [Initialization](#Initialization)
-* [Batch_Normalization](#Batch_Normalization)
-* [其他](#其他)
-	*  尽量对数据做shuffle!!
-	* 预处理: -mean/std zero-center 
-	* sgd + momentum.
+> [深度学习调参技巧-1](https://www.zhihu.com/question/25097993)
+> [深度学习网络调参技巧](https://zhuanlan.zhihu.com/p/24720954?utm_source=zhihu&utm_medium=social)
+
+[TOC]
 
 **首先**，并不是所有的造成“不满意的模型”的原因 都是 `overfitting`。接下来这些也是可能造成“不满意的模型”的原因。
 

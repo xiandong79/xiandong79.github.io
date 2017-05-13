@@ -40,7 +40,7 @@ Parameter averaging is the conceptually simplest approach to data parallelism. W
 
 Steps 2 through 4 are demonstrated in the image below. In this diagram, W represents the parameters (weights, biases) in the neural network. Subscripts are used to index **the version** of the parameters over time, and where necessary for each worker machine.
 
-![/downloads/ddl3.png](/downloads/ddl3.png)
+![/downloads/ddl3.png](/downloads/dll3.png)
 
 In fact, it’s straightforward to prove that a restricted version of parameter averaging is mathematically identical to training on a single machine; these restructions are parameter averaging after each minibatch, no updater (i.e., no momentum etc - just multiplication by learning rate), and an identical number of examples processed by each worker. For the mathematically inclined, the proof is as follows.
 
@@ -62,7 +62,7 @@ Now, parameter averaging is conceptually simple, but there are a few complicatio
 
 The naive approach is to simply average the parameters after each iteration. While this can work, we are likely to find that the overhead of doing so to be impractically high; **network communication** and **synchronization costs** may overwhelm the benefit obtained from the extra machines. Consequently, parameter averaging is generally implemented with an averaging period (in terms of number of minibatches per worker) greater than 1. However, if we average too infrequently, the local parameters in each worker may diverge too much, resulting in a poor model after averaging. The intuition here is that **the average of N different local minima are not guaranteed to be a local minima**:
 
-![/downloads/ddl4.png](/downloads/ddl4.png)
+![/downloads/ddl4.png](/downloads/dll4.png)
 
 :smile: :smile:What averaging period is too high? 
 
@@ -81,7 +81,7 @@ where $\lambda$ is a scaling factor (analogous to a learning rate hyperparameter
 
 Architecturally, this looks similar to parameter averaging:
 
-![/downloads/ddl5.png](/downloads/ddl5.png)
+![/downloads/ddl5.png](/downloads/dll5.png)
 
 Readers familiar with the mathematics of training neural networks may have noticed an immediate similarity here between parameter averaging and the update-based approach. If we again define our loss function as $L$, then parameter vector $W$ at iteration i + 1 for simple SGD training with learning rate $α$ is obtained by: $W_{i+1,j} = W_{i} - \alpha \nabla L_j$ with $\nabla L = \left(\frac{\partial L}{\partial w_1},\ldots,\frac{\partial L}{\partial w_n}\right)$ for $n$ parameters.
 
@@ -99,7 +99,7 @@ Consequently, there is **an equivalence** between parameter averaging and update
 
 These benefits are not without cost, however. By introducing asynchronous updates to the parameter vector, we introduce a new problem, known as the **stale gradient problem**. The stale gradient problem is quite simple: the calculation of gradients (updates) takes time. By the time a worker has finished these calculations and applies the results to the global parameter vector, the parameters may have been updated a number of times. This problem is illustrated in the figure below.
 
-![/downloads/ddl1.png](/downloads/ddl6.png)
+![/downloads/ddl1.png](/downloads/dll6.png)
 
 A naive implementation of asynchronous SGD can result is very high staleness values for the gradients. For example, Gupta et al. 2015 [3] show that the **average gradient staleness** is equal to the number of executors. For $N$ executors, this means that the gradients will be on average N steps out of date by the time they are applied to the global parameter vector. This has real-world consequences: high gradient staleness can **slow network convergence** significantly, and even stop some configurations from converging at all. Earlier **async SGD implementations (such as Google’s DistBelief system [2])** did not account for this effect, and hence learning was considerably less efficient than it otherwise could have been.
 
@@ -127,7 +127,7 @@ One of the more interesting alternative architectures for performing distributed
 * No centralized parameter server is present in the system (instead, peer to peer communication is used to transmit model updates between workers).
 * Updates are heavily compressed, resulting in the size of network communications being reduced by some 3 orders of magnitude.
 
-![/downloads/ddl1.png](/downloads/ddl7.png)
+![/downloads/ddl1.png](/downloads/dll7.png)
 
 In a standard data parallel implementation (using either parameter averaging or async SGD), the size of the network transfers are equal to the parameter vector size (as we are transferring either copies of the parameter vector, or one gradient value per parameter). While the idea of compressing parameters or updates isn’t exactly new, the implementation goes a way beyond other simple compression mechanisms (such as applying a compression codec or converting to 16-bit floating point representation).
 
@@ -174,7 +174,7 @@ We’ve seen that there are multiple approaches to training distributed neural n
 
 Furthermore, the answers to these questions will likely depend on a number of factors, such as the type and size of neural network, cluster hardware, use of features such as compression, as well as the specific implementation and configuration of the training method.
 
-![/downloads/ddl1.png](/downloads/ddl8.png)
+![/downloads/ddl1.png](/downloads/ddll8.png)
 
 That said, there seem to be **some conclusions** we can draw from the research:
 
@@ -193,7 +193,7 @@ Performing deep learning in a distributed manner isn’t always the best option,
 Distributed training isn’t free - distributed systems necessarily have an overhead compared to training on a single machine, due to things like synchonization and network transfers of data and parameters. For distributed training to be worthwhile, we need the computational benefit of the additional machines to outweigh these overheads. Furthermore, setup time (i.e., preparing and loading training data) and hyperparameter tuning **can be more complex** in distributed systems. *Consequently, our advice is simple: continue to train your networks on a single machine, until the training time becomes prohibitive.*
 
 
-![/downloads/ddl1.png](/downloads/ddl9.png)
+![/downloads/ddl1.png](/downloads/dll9.png)
 
 Network training times can become prohibitive for two reasons: either **network size** is large (costly per iteration), or **the amount of data** is large. Often, these go hand in hand; in fact, a mismatch between the two (large network, small data; small network, lots of data) may lead to underfitting or overfitting - both can lead to poor generalization of the final trained model.
 

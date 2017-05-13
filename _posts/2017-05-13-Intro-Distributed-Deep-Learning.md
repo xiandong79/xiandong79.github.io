@@ -1,4 +1,9 @@
-We’ll look at how the training of deep learning models can be significantly accelerated with **distributed computing on GPUs**, as well as discuss some of the challenges and examine current research on the topic. *The [original post](http://engineering.skymind.io/distributed-deep-learning-part-1-an-introduction-to-distributed-training-of-neural-networks) is here, the reason I re-copy the post is that it's equations do not render properly which...*
+We’ll look at how the training of deep learning models can be significantly accelerated with **distributed computing on GPUs**, as well as discuss some of the challenges and examine current research on the topic. *The [original post](http://engineering.skymind.io/distributed-deep-learning-part-1-an-introduction-to-distributed-training-of-neural-networks) is here, the reason I re-copy the post is that it's and my equations both do not render properly in browser because...* 
+
+> But you can download or find the proper disply is [here](https://github.com/xiandong79/xiandong79.github.io/blob/master/downloads/2017-05-13-Intro-Distributed-Deep-Learning.pdf)!!
+
+> Nothing can stop us, right?!
+
 
 [toc]
 

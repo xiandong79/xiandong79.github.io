@@ -10,6 +10,12 @@ Made with Jekyll using [Kasper theme](https://github.com/rosario/kasper)
 Also you can find a [step-by-step beginner's guide](http://jmcglone.com/guides/github-pages/) to creating **a personal website and blog** using Jekyll and hosting it for free using GitHub Pages here.
 
 
+### Build with Hugo and github pages.
+- [Academic: the personal website framework for Hugo](https://github.com/gcushen/hugo-academic)
+- [Create a Free Personal Academic Website with Hugo](https://georgecushen.com/create-your-website-with-hugo/)
+- [Getting started with the Academic framework for Hugo](https://sourcethemes.com/academic/post/getting-started/)
+
+
 ### 2. How-to Vim
 This are two [tutorial-1](https://segmentfault.com/a/1190000002793897) [tutorial-2](http://blog.jobbole.com/58978/) on how to use **code Autocompletion in Vim** by [YouCompleteMe](http://valloric.github.io/YouCompleteMe/) and [VundleVim](https://github.com/VundleVim/Vundle.vim). **Simple and Powerful**.
 
